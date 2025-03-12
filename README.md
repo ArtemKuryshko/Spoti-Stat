@@ -12,10 +12,8 @@ Ensure you have the following installed:
 1. **Clone the Repository**
 
    ```sh
-   git clone
-   ```
-   [https://github.com/ArtemKuryshko/Spoti-Stat.git](https://github.com/ArtemKuryshko/Spoti-Stat.git)
-   ```sh
+   git clone [https://github.com/ArtemKuryshko/Spoti-Stat.git](https://github.com/ArtemKuryshko/Spoti-Stat.git)
+   
    cd spoti-stat
    ```
 
