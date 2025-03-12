@@ -12,17 +12,18 @@ Ensure you have the following installed:
 1. **Clone the Repository**
 
    ```sh
-   git clone [https://github.com/ArtemKuryshko/Spoti-Stat.git](https://github.com/ArtemKuryshko/Spoti-Stat.git)
+   git clone https://github.com/ArtemKuryshko/Spoti-Stat.git
+   
    cd spoti-stat
    ```
 
-2. **Install Dependencies**
+3. **Install Dependencies**
 
    ```sh
    npm install
    ```
 
-3. **Run the Development Server**
+4. **Run the Development Server**
    ```sh
    npm run dev
    ```
