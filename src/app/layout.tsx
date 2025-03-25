@@ -2,16 +2,14 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '../assets/style/globals.css'
 import AuthProvider from '@/components/provider/AuthProvider'
+import { Poppins } from 'next/font/google';
 
-const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin']
-})
+const poppins = Poppins({ 
+  subsets: ['latin'], 
+  style: 'normal',
+  weight: '800',
+});
 
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin']
-})
 
 export const metadata: Metadata = {
 	title: 'Spoti Stat: New Way to Analyze Your Spotify Data',
@@ -26,7 +24,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+				className={`${poppins.className} antialiased`}
 			>
 				<AuthProvider>
 					{children}

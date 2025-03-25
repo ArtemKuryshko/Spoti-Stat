@@ -1,5 +1,5 @@
 'use client'
-
+import Image from "next/image"
 import Button from "@/components/UI/Button"
 import { signIn } from "next-auth/react"
 import { useSearchParams } from 'next/navigation'
@@ -16,7 +16,10 @@ export default function LoginPage() {
 
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen">
-			<h1 className="text-4xl font-bold mb-8">Welcome to Spoti-Stat</h1>
+			<div className="flex flex-col text-center items-center  justify-center mb-10">
+			<Image src="/logo.svg" alt="logo" width="95" height="108" className="mb-4"/>
+			<h1 className="text-5xl font-bold mb-6">Welcome to Spoti-Stat!</h1>
+			</div>
 
 			{error && (
 				<div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
