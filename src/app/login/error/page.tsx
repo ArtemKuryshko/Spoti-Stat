@@ -29,7 +29,7 @@ export default function ErrorPage() {
                 <p className="text-gray-700 mb-6">{errorMessage}</p>
                 <div className="flex flex-col gap-4">
                     <Link href="/login" className="w-full">
-                        <Button onClick={() => { }}>
+                        <Button style='primary' size='md' onClick={() => { }}>
                             Return to Login
                         </Button>
                     </Link>

@@ -32,7 +32,7 @@ const Button: FC<IButton> = ({
 					'bg-white text-black border-2 border-green-600':
 						style === 'secondary',
 					'px-4 py-2': size === 'sm',
-					'px-6 py-3': size === 'md',
+					'px-6 py-3 w-[384] h-[60]': size === 'md',
 					'px-8 py-4 w-[832] h-[80] text-3xl': size === 'lg'
 				},
 				className

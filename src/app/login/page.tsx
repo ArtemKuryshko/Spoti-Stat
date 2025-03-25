@@ -16,6 +16,7 @@ export default function LoginPage() {
 
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen">
+			<div className="flex flex-col text-center items-center  justify-center bg-black w-[1000] h-[600] rounded-[10] mb-8">
 			<div className="flex flex-col text-center items-center  justify-center mb-10">
 			<Image src="/logo.svg" alt="logo" width="95" height="108" className="mb-4"/>
 			<h1 className="text-5xl font-bold mb-6">Welcome to Spoti-Stat!</h1>
@@ -40,6 +41,7 @@ export default function LoginPage() {
 			>
 				{error ? 'Try Again' : 'Login with Spotify'}
 			</Button>
+			</div>
 		</div>
 	)
 }
