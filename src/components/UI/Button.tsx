@@ -28,7 +28,7 @@ const Button: FC<IButton> = ({
 			className={cn(
 				'rounded-[70px] cursor-pointer flex items-center justify-center gap-2',
 				{
-					'bg-green-500 text-black font-extrabold ': style === 'primary',
+					'bg-primary text-black font-extrabold ': style === 'primary',
 					'bg-white text-black border-2 border-green-600':
 						style === 'secondary',
 					'px-4 py-2': size === 'sm',

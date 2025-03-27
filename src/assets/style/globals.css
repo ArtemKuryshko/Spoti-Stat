@@ -1,9 +1,10 @@
 @import 'tailwindcss';
+@config '../../../tailwind.config.js';
 
 :root {
 	--background: #ffffff;
 	--foreground: #171717;
-	--gradient-backdround: linear-gradient(0deg, #000000, #232323)
+	--gradient-backdround: theme('background.gradient-main')
 }
 
 @theme inline {
@@ -15,7 +16,7 @@
 	:root {
 		--background: #0a0a0a;
 		--foreground: #ededed;
-		--gradient-background: linear-gradient(0deg, #000000, #232323);
+		--gradient-background: theme('background.gradient-main');
 	}
 }
 
