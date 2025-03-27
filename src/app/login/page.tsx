@@ -9,9 +9,8 @@ export default function LoginPage() {
 					<Image src="/logo.svg" alt="logo" width="95" height="108" className="mb-4" />
 					<h1 className="text-5xl font-bold mb-6">Welcome to Spoti-Stat!</h1>
 				</div>
-			</div>
-
-			<LoginForm />
+				<LoginForm />
+			</div>	
 		</div>
 	)
 }

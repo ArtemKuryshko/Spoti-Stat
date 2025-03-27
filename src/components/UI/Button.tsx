@@ -26,14 +26,14 @@ const Button: FC<IButton> = ({
 			type={type}
 			onClick={onClick}
 			className={cn(
-				'rounded-[70px] cursor-pointer flex items-center justify-center gap-2',
+				'cursor-pointer flex items-center justify-center gap-2',
 				{
 					'bg-primary text-black font-extrabold ': style === 'primary',
 					'bg-white text-black border-2 border-green-600':
 						style === 'secondary',
-					'px-4 py-2': size === 'sm',
-					'px-6 py-3 w-[384] h-[60]': size === 'md',
-					'px-8 py-4 w-[832] h-[80] text-3xl': size === 'lg'
+					'rounded-[30px] px-4 py-2': size === 'sm',
+					'rounded-[50px] px-6 py-3 w-[384] h-[60]': size === 'md',
+					'rounded-[70px] px-8 py-4 w-[832] h-[80] text-3xl': size === 'lg'
 				},
 				className
 			)}
