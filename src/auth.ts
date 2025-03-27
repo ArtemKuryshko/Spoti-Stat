@@ -7,6 +7,7 @@ const scopes = [
   'user-read-private',
   'user-read-recently-played',
   'user-top-read',
+  'user-follow-read',
   'user-read-currently-playing',
   'user-read-playback-state',
   'user-modify-playback-state',
@@ -17,8 +18,6 @@ const scopes = [
   'playlist-modify-private',
   'playlist-modify-public',
   'user-read-playback-position',
-  'user-top-read',
-  'user-read-recently-played',
   'user-library-read'
 ].join(',')
 
@@ -49,13 +48,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.expiresAt = account.expires_at
         token.refreshToken = account.refresh_token        
       } else if (Date.now() > (token.expiresAt as number) * 1000) {
-
-        if (!token.refreshToken) throw new TypeError("Missing refresh_token")
-          
         try {
-          const { data } = await AuthService.refreshToken(token.refreshToken as string);
- 
-          const newTokens = data as {
+          const response = await AuthService.refreshToken(token.refreshToken as string);
+
+          const newTokens = response as {
             access_token: string
             expires_in: number
             refresh_token?: string
