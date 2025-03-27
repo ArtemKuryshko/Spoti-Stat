@@ -15,8 +15,6 @@ export default async function DashboardPage() {
         redirect(PathEnum.LOGIN);
     }
 
-    console.log(session)
-
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
             <h1 className="text-4xl font-bold mb-8">

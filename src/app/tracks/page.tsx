@@ -1,15 +1,13 @@
-import { auth } from '@/auth';
-import { getSavedTracks } from '@/services/tracks.service';
-import { redirect } from 'next/navigation';
-import { PathEnum } from '@/types/path.enum';
+import { AuthService } from '@/services/auth.service';
+import { TracksService } from '@/services/tracks.service';
 
 export default async function TracksPage() {
-    const session = await auth();
 
-    const response = await getSavedTracks(session?.accessToken as string);
-    console.log(response);
+    const token = await AuthService.getToken();
 
-    const tracks = response.data.items;
+    const { data } = await TracksService.getSavedTracks(token);
+
+    const tracks = data.items;
 
     return (
         <div className="container mx-auto px-4 py-8">

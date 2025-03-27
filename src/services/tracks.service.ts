@@ -1,9 +1,12 @@
 import { instance } from "@/api/api.interceptor"
 
-export const getSavedTracks = async (accessToken: string) => {
-    return instance.get("/me/tracks", {
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-    })
+export const TracksService = {
+    getSavedTracks: async (accessToken: string) => {
+        return instance("/me/tracks", {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        })
+    }
 }
