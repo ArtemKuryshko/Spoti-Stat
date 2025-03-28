@@ -3,7 +3,6 @@ import Button from '@/components/UI/Button';
 import { redirect } from 'next/navigation';
 import { PathEnum } from '@/types/path.enum';
 import Link from 'next/link';
-import Header from '@/components/modules/Header/header';
 
 async function handleSignOut() {
     'use server'
@@ -19,7 +18,6 @@ export default async function DashboardPage() {
 
     return (
         <>
-        <Header/>
         <div className="flex flex-col items-center justify-center min-h-screen">
             <h1 className="text-4xl font-bold mb-8">
                 Welcome, {session.user.name}!

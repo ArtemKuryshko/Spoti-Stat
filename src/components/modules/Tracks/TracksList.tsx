@@ -19,13 +19,13 @@ const TracksList: FC<ITracksList> = ({ tracks }) => {
                             className="w-24 h-24 object-cover rounded"
                         />
                         <div>
-                            <h2 className="text-lg font-semibold text-white truncate">
+                            <h2 className="text-lg font-bold text-white truncate w-[18rem] mb-4">
                                 {item.track.name}
                             </h2>
-                            <p className="text-zinc-400">
+                            <p className="text-zinc-400 font-semibold truncate w-[16rem] ">
                                 {item.track.artists.map((artist: any) => artist.name).join(', ')}
                             </p>
-                            <p className="text-sm text-zinc-500 mt-1">
+                            <p className="text-sm font-medium text-zinc-500 mt-1">
                                 {item.track.album.name}
                             </p>
                         </div>
