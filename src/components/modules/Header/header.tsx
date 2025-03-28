@@ -13,16 +13,16 @@ export default async function Header() {
     const image = data.images[0].url
     
     return (
-        <div className="flex fixed position-fixed flex-row top-0 left-0 right-0 w-full bg-black items-center justify-between p-4 h-[88]">
+        <div className="flex fixed position-fixed flex-row top-0 left-0 right-0 w-full bg-black items-center justify-between p-4 h-[72]">
                 
-                <Link href="/dashboard" className="ml-12">
+                <Link href={PathEnum.DASHBOARD} className="ml-12">
                 <div className="flex flex-row gap-3">
-                <Image src="/logo.svg" alt="logo" width="48" height="54" className=""/>
-                <h1 className="text-primary font-extrabold text-[38px]">Spoti-Stat</h1>
+                <Image src="/logo.svg" alt="logo" width="36" height="44" className=""/>
+                <h1 className="text-primary font-extrabold text-[32px]">Spoti-Stat</h1>
                 </div>
                 </Link>
 
-                <div className="flex flex-row gap-16 text-primary font-semibold text-[24px] mr-0">
+                <div className="flex flex-row gap-16 text-primary font-semibold text-[20px] mr-0">
                     <Link href={PathEnum.TRACKS}>Tracks</Link>       
                     <Link href={PathEnum.ARTISTS}>Artists</Link>       
                     <Link href={PathEnum.ALBUMS}>Albums</Link>       
