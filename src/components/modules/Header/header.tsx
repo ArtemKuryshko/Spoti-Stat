@@ -2,7 +2,16 @@ import Button from "@/components/UI/Button"
 import Image from "next/image"
 import Link from "next/link"
 import { PathEnum } from "@/types/path.enum"
-export default function Header() {
+import { ProfileService } from "@/services/profile.service"
+import UserIcon from "../User/UserIcon"
+
+
+export default async function Header() {
+
+    const {data} = await ProfileService.GetProfile()
+    const name = data.display_name
+    const image = data.images[0].url
+    
     return (
         <div className="flex fixed position-fixed flex-row top-0 left-0 right-0 w-full bg-black items-center justify-between p-4 h-[88]">
                 
@@ -21,7 +30,7 @@ export default function Header() {
                     <Link href={PathEnum.RECOMENDATIONS}>Recomendations</Link>            
                 </div>
                 <Link href={PathEnum.SETTINGS}>
-                    <Button size='sm' style='primary' type="button" className="mr-12 text-[20px] font-bold rounded-1xl" >Settings</Button>
+                    <UserIcon name = {name} image = {image}/>
                 </Link>
         </div>
     )
