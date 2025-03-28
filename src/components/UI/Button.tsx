@@ -33,7 +33,7 @@ const Button: FC<IButton> = ({
 						style === 'secondary',
 					'rounded-[30px] px-4 py-2': size === 'sm',
 					'rounded-[50px] px-6 py-3 w-[384] h-[60]': size === 'md',
-					'rounded-[70px] px-8 py-4 w-[832] h-[80] text-3xl': size === 'lg'
+					'rounded-[70px] px-8 py-4 w-[600] h-[65] text-2xl': size === 'lg'
 				},
 				className
 			)}

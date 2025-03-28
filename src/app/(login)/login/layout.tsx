@@ -6,7 +6,7 @@ interface ILoginLayout {
 
 const LoginLayout: FC<ILoginLayout> = ({ children }) => {
 	return (
-		<div className='h-screen p-4'>{children}</div>
+		<div className='h-screen p-24'>{children}</div>
 	)
 }
 
