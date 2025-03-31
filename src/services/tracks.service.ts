@@ -6,7 +6,7 @@ export const TracksService = {
     getSavedTracks: async () => {
         const accessToken = await AuthService.getToken();
 
-        return instance("/me/tracks", {
+        return instance("/me/tracks?limit=48", {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${accessToken}`,

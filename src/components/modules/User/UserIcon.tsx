@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 interface IUserIcon {
     name: string;
     image: string;
