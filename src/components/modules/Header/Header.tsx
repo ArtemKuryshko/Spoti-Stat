@@ -9,13 +9,12 @@ import UserIcon from "../../UI/UserIcon"
 export default async function Header() {
 
     const { data } = await ProfileService.getProfile()
-    console.log(data)
 
     const name = data?.display_name
     const image = data?.images[0]?.url
 
     return (
-        <div className="flex fixed position-fixed flex-row top-0 left-0 right-0 w-full bg-black items-center justify-between p-4 h-[72]">
+        <div className="flex fixed position-fixed flex-row top-0 left-0 right-0 w-full bg-black items-center justify-between p-4 h-[72] z-10">
 
             <Link href={PathEnum.DASHBOARD} className="ml-24">
                 <div className="flex flex-row gap-3">

@@ -42,39 +42,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     })
   ],
   callbacks: {
-    async jwt ({ token, account }) {
+    async jwt({ token, account }) {
       if (account) {
-        token.accessToken = account.access_token
-        token.expiresAt = account.expires_at
-        token.refreshToken = account.refresh_token        
-      } else if (Date.now() > (token.expiresAt as number) * 1000) {
+        token.accessToken = account.access_token;
+        token.refreshToken = account.refresh_token;
+        token.expiresAt = account.expires_in
+
+      } else if (!token.expiresAt && Date.now() > (token.expiresAt as number) * 1000) {
         try {
-          const response = await AuthService.refreshToken(token.refreshToken as string);
-
-          const newTokens = response as {
-            access_token: string
-            expires_in: number
-            refresh_token?: string
-          }
-
-          token.accessToken = newTokens.access_token
-          token.expiresAt = Math.floor(Date.now() / 1000 + newTokens.expires_in)
-          token.refreshToken = newTokens.refresh_token ?? token.refreshToken // Keeps old refresh token if new one is not returned
-
+          const newTokens = await AuthService.refreshToken(token);
+          token.accessToken = newTokens.access_token;
+          token.expiresAt = newTokens.expires_in;
+          token.refreshToken = newTokens.refresh_token; // Keep the old refresh token if not returned
         } catch (error) {
-          console.error("Error refreshing access_token", error)
-          
-          // If we fail to refresh the token, return an error so we can handle it on the page
-          token.error = "RefreshTokenError"
+          console.error("Failed to refresh access token:", error);
+          token.error = "RefreshTokenError";
         }
       }
 
-      return token
+      return token;
     },
-    async session ({ session, token }: { session: any, token: any }) {
-      session.accessToken = token.accessToken
-      
-      return session
+  
+
+    async session({ session, token }) {
+      session.accessToken = token.accessToken as string;
+
+      return session;
     },
     async redirect({ baseUrl }) {
       return baseUrl

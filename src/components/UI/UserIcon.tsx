@@ -1,4 +1,6 @@
 import { FC } from 'react';
+import Image from 'next/image';
+
 interface IUserIcon {
     name: string;
     image: string;
@@ -7,7 +9,12 @@ interface IUserIcon {
 const UserIcon: FC<IUserIcon> = ({ name, image }) => {
     return (
         <div>
-            <img src={image} alt={name} className="w-[50px] h-[50px] rounded-full mr-12" />
+            {image
+                ? <Image src={image} alt={name} className="w-12 h-12 rounded-full mr-12" />
+                : <div className="w-12 h-12 rounded-full mr-12 bg-white flex items-center justify-center text-dark_grey text-[20px] font-bold">
+                    {name.charAt(0)}
+                </div>}
         </div>
-    )}
+    )
+}
 export default UserIcon;
