@@ -3,14 +3,16 @@ import Image from "next/image"
 import Link from "next/link"
 import { PathEnum } from "@/types/path.enum"
 import { ProfileService } from "@/services/profile.service"
-import UserIcon from "../User/UserIcon"
+import UserIcon from "../../UI/UserIcon"
 
 
 export default async function Header() {
 
     const { data } = await ProfileService.getProfile()
-    const name = data.display_name
-    const image = data.images[0]?.url
+    console.log(data)
+
+    const name = data?.display_name
+    const image = data?.images[0]?.url
 
     return (
         <div className="flex fixed position-fixed flex-row top-0 left-0 right-0 w-full bg-black items-center justify-between p-4 h-[72]">

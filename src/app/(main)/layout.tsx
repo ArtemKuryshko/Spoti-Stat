@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import '@/assets/style/globals.css'
 import AuthProvider from '@/components/provider/AuthProvider'
 import { Poppins } from 'next/font/google'
-import Header from '@/components/modules/Header/header'
+import Header from '@/components/modules/Header/Header'
 
 const poppins = Poppins({
 	subsets: ['latin'],
