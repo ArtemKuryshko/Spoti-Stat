@@ -11,7 +11,6 @@ const poppins = Poppins({
 	weight: '800'
 })
 
-
 export const metadata: Metadata = {
 	title: 'Spoti Stat: New Way to Analyze Your Spotify Data',
 	description: 'Analyzing your Spotify data in a new way.'
