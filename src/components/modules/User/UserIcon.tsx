@@ -8,7 +8,7 @@ interface IUserIcon {
 const UserIcon: FC<IUserIcon> = ({ name, image }) => {
     return (
         <div>
-            <img src={image} alt={name} className="w-[50px] h-[50px] rounded-full mr-12" />
+            <img src={image} alt={name}  className="w-[50] h-[50] rounded-full mr-12" />
         </div>
     )}
 export default UserIcon;
