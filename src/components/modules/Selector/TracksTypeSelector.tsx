@@ -5,6 +5,7 @@ import { useState } from 'react';
 const timeOptions = [
   { label: "Top Tracks", value: "top" },
   { label: 'Saved Tracks', value: 'saved' },
+  { label: 'Recently Played', value: 'recently' },
 ];
 
 export default function TimeRangeSelector({

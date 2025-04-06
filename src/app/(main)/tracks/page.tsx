@@ -7,9 +7,10 @@ import TopTracksSelector from '@/components/modules/Selector/TopTracksSelector'
 import TracksTypeSelector from '@/components/modules/Selector/TracksTypeSelector'
 
 export default function TracksPage() {
-	const[time_range, setTime_range] = useState('short_term')
 	const[topTracks, setTopTracks] = useState([])
+	const[time_range, setTime_range] = useState('short_term')
 	const[savedTracks, setSavedTracks] = useState([])
+	const[recentTracks, setRecentTracks] = useState([])
 	const[tracksType, setTracksType] = useState('top')
 	
 	const getTopTracks = async (time_range: string) => {
@@ -20,13 +21,26 @@ export default function TracksPage() {
 		const { data } = await TracksService.getSavedTracks()
 		setSavedTracks(data.items)
 	}
-
+	const getRecentTracks = async () => {
+		const { data } = await TracksService.getRecentlyPlayedTracks()
+		setRecentTracks(data.items)
+	}
 	useEffect(() => {
-		if (tracksType === 'saved') {
-			getSavedTracks()
+		const PollTracks = () => {
+			if (tracksType === 'saved') {
+				getSavedTracks()
+			}
+			else if (tracksType === 'top') {
+				getTopTracks(time_range)
+			}
+			else {
+				getRecentTracks()
+			}
 		}
-		else {
-			getTopTracks(time_range)}
+		let interval = setInterval(PollTracks, 10000)
+		PollTracks()
+		return () => clearInterval(interval)
+		
 	}, [time_range, tracksType])
 	
 
@@ -40,7 +54,10 @@ export default function TracksPage() {
 					<TopTracksSelector current={time_range} onChange={setTime_range} />
 					<TopTracksList tracks={topTracks} />
 					</>
-				):(<SavedTracksList tracks={savedTracks}/>)}					
+				):(tracksType === 'recently' ? (
+					<SavedTracksList tracks={recentTracks} />
+				):<SavedTracksList tracks={savedTracks}/>)}
+					
 			</div>
 		</>
 	)

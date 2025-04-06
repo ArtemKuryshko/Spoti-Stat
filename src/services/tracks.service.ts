@@ -15,8 +15,8 @@ export const TracksService = {
         })
     },
     getTopTracks: async (time_range: string, ) => {
-
         const accessToken = localStorage.getItem('access_token');
+
         return instance("/me/top/tracks", {
             method: 'GET',
             params: {
@@ -27,7 +27,21 @@ export const TracksService = {
                 Authorization: `Bearer ${accessToken}`,
             },
         })
+    },
+    getRecentlyPlayedTracks: async () => {
+        const accessToken = localStorage.getItem('access_token');
+
+        return instance("/me/player/recently-played", {
+            method: 'GET',
+            params: {
+                limit: 48,
+            },
+            headers: {
+                Authorization: `Bearer ${accessToken}`, 
+            }
+        })
     }
+
 }
 
 export default TracksService;
