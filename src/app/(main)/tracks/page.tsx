@@ -1,23 +1,46 @@
-
+"use client"
 import { TracksService } from '@/services/tracks.service'
-import TracksList from '@/components/modules/Tracks/SavedTracksList'
+import SavedTracksList from '@/components/modules/Tracks/SavedTracksList'
 import TopTracksList from '@/components/modules/Tracks/TopTracksList'
+import { useState, useEffect } from 'react'
+import TopTracksSelector from '@/components/modules/Selector/TopTracksSelector'
+import TracksTypeSelector from '@/components/modules/Selector/TracksTypeSelector'
+
+export default function TracksPage() {
+	const[time_range, setTime_range] = useState('short_term')
+	const[topTracks, setTopTracks] = useState([])
+	const[savedTracks, setSavedTracks] = useState([])
+	const[tracksType, setTracksType] = useState('top')
+	
+	const getTopTracks = async (time_range: string) => {
+		const { data } = await TracksService.getTopTracks(time_range)
+		setTopTracks(data.items)
+	}
+	const getSavedTracks = async () => {
+		const { data } = await TracksService.getSavedTracks()
+		setSavedTracks(data.items)
+	}
+
+	useEffect(() => {
+		if (tracksType === 'saved') {
+			getSavedTracks()
+		}
+		else {
+			getTopTracks(time_range)}
+	}, [time_range, tracksType])
+	
 
 
-export default async function TracksPage() {
-	const { data } = await TracksService.getSavedTracks()
-	const { data: TopTracks } = await TracksService.getTopTracks()
-
-	const tracks = data.items
-	console.log(TopTracks)
-	const topTracks = TopTracks.items
 	return (
 		<>
-			<div className='container mx-auto px-4 py-8'>
-				{/* <button onClick={() => {}} className='w-[40] h-[20] bg-primary text-black rounded-md'>hide it</button> */}
-				<TracksList tracks={tracks} />
-				<h1 className='text-2xl font-bold mb-4'>Top Tracks</h1>
-				<TopTracksList tracks={topTracks} />
+			<div className='container mx-auto px-4 py-8 '>
+				<TracksTypeSelector current={tracksType} onChange={setTracksType}/>
+				{tracksType === 'top' ?(
+					<>
+					<TopTracksSelector current={time_range} onChange={setTime_range} />
+					<TopTracksList tracks={topTracks} />
+					</>
+				):(<SavedTracksList tracks={savedTracks}/>)}					
 			</div>
 		</>
 	)

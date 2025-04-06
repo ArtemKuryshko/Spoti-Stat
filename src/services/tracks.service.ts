@@ -5,7 +5,7 @@ import { time } from "console";
 
 export const TracksService = {
     getSavedTracks: async () => {
-        const accessToken = await AuthService.getToken();
+        const accessToken = localStorage.getItem('access_token');
 
         return instance("/me/tracks?limit=48", {
             method: 'GET',
@@ -14,14 +14,14 @@ export const TracksService = {
             },
         })
     },
-    getTopTracks: async () => {
-        const accessToken = await AuthService.getToken();
+    getTopTracks: async (time_range: string, ) => {
 
+        const accessToken = localStorage.getItem('access_token');
         return instance("/me/top/tracks", {
             method: 'GET',
             params: {
                 limit: 50,
-                time_range: 'short_term'
+                time_range: time_range
             },
             headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -29,3 +29,5 @@ export const TracksService = {
         })
     }
 }
+
+export default TracksService;

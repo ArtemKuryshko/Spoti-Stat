@@ -7,13 +7,17 @@ interface ITracksList {
 const TopTracksList: FC<ITracksList> = ({ tracks }) => {
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ml-28 mr-28">
-            {tracks.map((item: any) => (
+            {tracks.map((item: any, index) => (
+                
                 <a
                     href={item.external_urls.spotify}
                     target="_blank"
                     key={item.id}
                     className="bg-dark_grey from-zinc-800 to-zinc-900 p-3 rounded-lg shadow-soft hover:shadow-deep hover:scale-105 transition-all w-102 flex items-center gap-4"
                 >
+                    <h1 className="text-lg font-bold text-white truncate mt-2">
+                        {index + 1}
+                    </h1>
                     <img
                         src={item.album.images[0]?.url}
                         alt={item.name}
