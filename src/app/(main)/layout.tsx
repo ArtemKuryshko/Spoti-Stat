@@ -1,14 +1,19 @@
 import Header from '@/components/modules/Header/Header'
+import LocalStorageWriter from '@/components/modules/LocalStorage/LocalStorageWriter'
+import { AuthService } from '@/services/auth.service'
 
-export default function MainLayout({
+export default async function MainLayout({
 	children
 }: {
 	children: React.ReactNode
 }) {
+    const accessToken: string = await AuthService.getToken();
+	
 	return (
 		<>
 			<Header />
-			<div>{children}</div>
+			<LocalStorageWriter accessToken={accessToken} />
+			<div className='pt-[88]'>{children}</div>
 		</>
 	)
 }

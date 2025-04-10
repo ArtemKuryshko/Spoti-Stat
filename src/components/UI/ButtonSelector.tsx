@@ -19,10 +19,10 @@ function ButtonSelector({
 					disabled={currentValue === option}
 					onClick={() => onChange(option.value)}
 					className={`px-4 py-2 rounded-full border-2 transition 
-            ${
+            			${
 							currentValue === option.value
 								? 'bg-black text-white border-primary'
-								: 'bg-primary text-black border-black'
+								: 'bg-primary text-black border-black //'
 						}`}
 				>
 					{option.label}

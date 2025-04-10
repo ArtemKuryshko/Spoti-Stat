@@ -23,7 +23,7 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={`${poppins.className} antialiased`}>
 				<AuthProvider>
-					<div className='pt-[88]'>{children}</div>
+					<div>{children}</div>
 				</AuthProvider>
 			</body>
 		</html>
