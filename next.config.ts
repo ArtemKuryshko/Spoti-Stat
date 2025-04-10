@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
   env: {
     AUTH_SPOTIFY_ID: process.env.AUTH_SPOTIFY_ID,
     AUTH_SPOTIFY_SECRET: process.env.AUTH_SPOTIFY_SECRET
+  },
+  images: {
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'i.scdn.co',
+      port: ''
+    }]
   }
 };
 

@@ -1,14 +1,22 @@
-import { FC } from 'react';
+import Image from 'next/image'
+import { FC } from 'react'
 
 interface IUserIcon {
-    name: string;
-    image: string;
+	name: string
+	image: string
 }
 
 const UserIcon: FC<IUserIcon> = ({ name, image }) => {
-    return (
-        <div>
-            <img src={image} alt={name}  className="w-[50] h-[50] rounded-full mr-12" />
-        </div>
-    )}
-export default UserIcon;
+	return (
+		<div>
+			<Image
+				width={50}
+				height={50}
+				src={image}
+				alt={name}
+				className='rounded-full mr-12'
+			/>
+		</div>
+	)
+}
+export default UserIcon

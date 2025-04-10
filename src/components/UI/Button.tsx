@@ -38,7 +38,7 @@ const Button: FC<IButton> = ({
 				className
 			)}
 		>
-			{icon && <Image src={icon} alt='Icon' />}
+			{icon && <Image width={12} height={12} src={icon} alt='Icon' />}
 			{children}
 		</button>
 	)

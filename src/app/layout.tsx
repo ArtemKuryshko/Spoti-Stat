@@ -9,7 +9,6 @@ const poppins = Poppins({
 	weight: '800'
 })
 
-
 export const metadata: Metadata = {
 	title: 'Spoti Stat: New Way to Analyze Your Spotify Data',
 	description: 'Analyzing your Spotify data in a new way.'
@@ -24,10 +23,9 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={`${poppins.className} antialiased`}>
 				<AuthProvider>
-					<div >{children}</div>
+					<div className='pt-[88]'>{children}</div>
 				</AuthProvider>
 			</body>
 		</html>
 	)
 }
-
