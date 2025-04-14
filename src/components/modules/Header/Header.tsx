@@ -18,7 +18,7 @@ export default async function Header() {
 	}
 
 	return (
-		<div className='flex fixed position-fixed flex-row top-0 left-0 right-0 w-full bg-black items-center justify-between p-4 h-[70]'>
+		<div className='flex fixed position-fixed flex-row top-0 z-20 left-0 right-0 w-full bg-black items-center justify-between p-4 h-[70]'>
 			<Link href={PathEnum.DASHBOARD} className='ml-24'>
 				<Logo />
 			</Link>
