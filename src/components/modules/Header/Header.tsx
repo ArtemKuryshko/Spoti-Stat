@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { PathEnum } from '@/types/path.enum'
 import { ProfileService } from '@/services/profile.service'
-import UserIcon from '../User/UserIcon'
+import UserIcon from '@/components/UI/UserIcon'
 import Logo from '@/components/UI/Logo'
 
 export default async function Header() {
@@ -18,7 +18,7 @@ export default async function Header() {
 	}
 
 	return (
-		<div className='flex fixed position-fixed flex-row top-0 left-0 right-0 w-full bg-black items-center justify-between p-4 h-[70]'>
+		<div className='flex fixed position-fixed flex-row top-0 left-0 right-0 w-full bg-black items-center justify-between p-4 h-[70] z-50'>
 			<Link href={PathEnum.DASHBOARD} className='ml-24'>
 				<Logo />
 			</Link>
@@ -32,7 +32,7 @@ export default async function Header() {
 			</div>
 			<Link
 				href={PathEnum.SETTINGS}
-				className='mr-24 border-2 border-primary rounded-full max-h-[54] max-w-[54] items-center'
+				className='mr-24 border-2 border-primary rounded-full h-[54] w-[54] overflow-hidden'
 			>
 				<UserIcon name={name} image={image} />
 			</Link>

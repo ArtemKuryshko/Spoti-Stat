@@ -27,7 +27,6 @@ const TrackList: FC<ITrackList> = ({ tracks, type }) => {
 						href={currentTrack.external_urls?.spotify}
 						target='_blank'
 						key={currentTrack.id}
-						className='bg-dark_grey from-zinc-800 to-zinc-900 p-3 rounded-lg shadow-soft hover:shadow-deep hover:scale-105 transition-all w-102 flex items-center gap-4'
 					>
 						{type === 'top' && (
 							<h1 className='text-lg font-bold text-white truncate mt-2'>

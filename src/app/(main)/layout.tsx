@@ -7,13 +7,13 @@ export default async function MainLayout({
 }: {
 	children: React.ReactNode
 }) {
-    const accessToken: string = await AuthService.getToken();
-	
+	const accessToken: string = await AuthService.getToken()
+
 	return (
 		<>
 			<Header />
 			<LocalStorageWriter accessToken={accessToken} />
-			<div className='pt-[88]'>{children}</div>
+			<div className='pt-[88] pb-[20]'>{children}</div>
 		</>
 	)
 }

@@ -7,7 +7,7 @@ export default function ClientLayout({
 }) {
 	return (
 		<QueryProvider>
-			<div className='pt-[88]'>{children}</div>
+			<div>{children}</div>
 		</QueryProvider>
 	)
 }

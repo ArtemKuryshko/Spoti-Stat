@@ -1,8 +1,9 @@
 {
 	"editor.formatOnSave": true,
-	"vscode-pets.theme": "winter",
+	"vscode-pets.theme": "beach",
 	"vscode-pets.petSize": "small",
 	"vscode-pets.petType": "chicken",
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnPaste": true
+	"editor.formatOnPaste": true,
+	"vscode-pets.petColor": "socks beige"
 }

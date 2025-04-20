@@ -1,4 +1,3 @@
-
 export default function GenresPage() {
-	return <div>Genres</div>
+	return <h1>Genres</h1>
 }
