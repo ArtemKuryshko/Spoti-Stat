@@ -9,8 +9,8 @@ import {
 	TopTimeType,
 	TrackListType,
 	TrackType,
-	TopTimeOptions,
-	TrackOptions
+	TrackOptions,
+	TopTimeOptions
 } from '@/types/track.type'
 import Loader from '@/components/UI/Loader/Loader'
 import ButtonSelector from '@/components/UI/ButtonSelector'
@@ -18,7 +18,7 @@ import ButtonSelector from '@/components/UI/ButtonSelector'
 export default function TracksPage() {
 	const [timeRange, setTimeRange] = useState<TopTimeType>('short_term')
 	const [tracksType, setTracksType] = useState<TrackListType>('top')
-	const [intervalMs, setIntervalMs] = useState(3000)
+	const [intervalMs] = useState(3000)
 
 	const {
 		data: topTracks,
@@ -54,7 +54,17 @@ export default function TracksPage() {
 		queryKey: ['recent-tracks'],
 		queryFn: async () => {
 			const { data } = await TracksService.getRecentlyPlayedTracks()
-			return data.items
+			return data.items.filter(
+				(
+					track: { track: TrackType },
+					index: number,
+					self: { track: TrackType }[]
+				) =>
+					index ===
+					self.findIndex(
+						(t: { track: TrackType }) => t.track.id === track.track.id
+					)
+			)
 		},
 		refetchInterval: intervalMs
 	})
@@ -70,8 +80,8 @@ export default function TracksPage() {
 
 	return (
 		<>
-			<div className='container mx-auto px-4 py-8 pt-0'>
-				<ButtonSelector
+			<div className='container mx-auto px-4 py-8  pt-0'>
+				<ButtonSelector<TrackListType>
 					options={TrackOptions}
 					currentValue={tracksType}
 					onChange={setTracksType}
@@ -79,7 +89,7 @@ export default function TracksPage() {
 
 				{!isTopLoading && tracksType === 'top' && (
 					<>
-						<ButtonSelector
+						<ButtonSelector<TopTimeType>
 							options={TopTimeOptions}
 							currentValue={timeRange}
 							onChange={setTimeRange}
@@ -87,19 +97,11 @@ export default function TracksPage() {
 						<TrackList tracks={topTracks ? topTracks : []} />
 					</>
 				)}
+
 				{!isRecentLoading && tracksType === 'recently' && (
-					<TrackList
-						tracks={
-							recentTracks
-								? recentTracks?.filter(
-										(track: { track: TrackType }, index: number, self) =>
-											index ===
-											self.findIndex(t => t.track.id === track.track.id)
-								  )
-								: []
-						}
-					/>
+					<TrackList tracks={recentTracks ? recentTracks : []} />
 				)}
+
 				{!isSavedLoading && tracksType === 'saved' && (
 					<TrackList tracks={savedTracks ? savedTracks : []} />
 				)}

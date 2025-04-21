@@ -1,4 +1,4 @@
-export type TrackType = {
+export interface TrackType {
     id: string | number
     name: string
     album: {
@@ -19,7 +19,7 @@ export type TrackType = {
     }
 }
 
-export type InnerTrackType = {
+export interface InnerTrackType {
     track: TrackType
 }
 
@@ -27,13 +27,16 @@ export type TrackListType = 'top' | 'recently' | 'saved'
 
 export type TopTimeType = 'short_term' | 'medium_term' | 'long_term'
 
-export type TrackOptionsType = {
+export interface GeneralOptionsType {
     label: string
+    value: string
+}
+
+export interface TrackOptionsType extends GeneralOptionsType {
     value: TrackListType
 }
 
-export type TopTimeOptionsType = {
-    label: string
+export interface TopTimeOptionsType extends GeneralOptionsType {
     value: TopTimeType
 }
 

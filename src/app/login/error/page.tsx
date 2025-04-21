@@ -24,9 +24,9 @@ export default function ErrorPage() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-4">
-            <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-                <h1 className="text-2xl font-bold text-red-600 mb-4">Authentication Error</h1>
-                <p className="text-gray-700 mb-6">{errorMessage}</p>
+            <div className="max-w-md w-full bg-black rounded-lg shadow-lg p-8">
+                <h1 className="text-2xl font-bold mb-4">Authentication Error</h1>
+                <p className="mb-6">{errorMessage}</p>
                 <div className="flex flex-col gap-4">
                     <Link href="/login" className="w-full">
                         <Button style='primary' size='md' onClick={() => { }}>

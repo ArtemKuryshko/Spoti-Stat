@@ -1,12 +1,17 @@
-import { memo, Dispatch, SetStateAction } from 'react'
+import { GeneralOptionsType } from '@/types/track.type'
+import { memo, ReactNode, Dispatch, SetStateAction, JSX } from 'react'
 
-interface IButtonSelector {
-	options: any
-	currentValue: string
-	onChange: Dispatch<SetStateAction<any>>
+interface IButtonSelector<T> {
+	options: GeneralOptionsType[]
+	currentValue: T
+	onChange: Dispatch<SetStateAction<T>>
 }
 
-function ButtonSelector({ options, currentValue, onChange }: IButtonSelector) {
+const BasicButtonSelector = <T,>({
+	options,
+	currentValue,
+	onChange
+}: IButtonSelector<T>) => {
 	return (
 		<div className='flex gap-4 mb-8 ml-28'>
 			{options.map(option => (
@@ -28,4 +33,8 @@ function ButtonSelector({ options, currentValue, onChange }: IButtonSelector) {
 	)
 }
 
-export default memo(ButtonSelector)
+const ButtonSelector = memo(BasicButtonSelector)
+
+export default ButtonSelector as <T>(
+	props: IButtonSelector<T> & { children?: ReactNode }
+) => JSX.Element
