@@ -3,7 +3,7 @@ import { ArtistsService } from "./artists.service";
 
 export const GenresService = {
     getTopGenres: async () => {
-        const { data: { items: artists } } = await ArtistsService.getTopListenedArtists(50);
+        const artists = await ArtistsService.getTopListenedArtists(50);
 
         const genres = artists.map((artist: Artist) => artist.genres);
 

@@ -1,22 +1,25 @@
 import { instance } from "@/api/api.interceptor"
-import { AuthService } from "./auth.service";
 import { ArtistsFollowingResponse, ArtistsResponse } from "@/types/artist.types";
 
 export const ArtistsService = {
     getArtists: async () => {
-        const accessToken = await AuthService.getToken();
+        const accessToken = localStorage.getItem('access_token');
 
-        return instance<ArtistsFollowingResponse>(`/me/following?type=artist`, {
+        const response = instance<ArtistsFollowingResponse>(`/me/following?type=artist`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },
         })
+
+        console.log('item' + (await response).data.artists.items)
+
+        return (await response).data.artists.items
     },
     getTopListenedArtist: async () => {
-        const accessToken = await AuthService.getToken();
+        const accessToken = localStorage.getItem('access_token');
 
-        return instance<ArtistsResponse>("/me/top/artists", {
+        const response = instance<ArtistsResponse>("/me/top/artists", {
             method: 'GET',
             params: {
                 limit: 1,
@@ -25,11 +28,13 @@ export const ArtistsService = {
                 Authorization: `Bearer ${accessToken}`,
             },
         })
+
+        return (await response).data.items[0]
     },
     getTopListenedArtists: async (limit: number = 20) => {
-        const accessToken = await AuthService.getToken();
+        const accessToken = localStorage.getItem('access_token');
 
-        return instance<ArtistsResponse>("/me/top/artists", {
+        const response = instance<ArtistsResponse>("/me/top/artists", {
             method: 'GET',
             params: {
                 limit
@@ -38,5 +43,7 @@ export const ArtistsService = {
                 Authorization: `Bearer ${accessToken}`,
             },
         })
+
+        return (await response).data.items
     }
 }

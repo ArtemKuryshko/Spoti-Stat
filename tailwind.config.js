@@ -25,6 +25,10 @@ export default {
 				'gradient-conic':
 					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
 			},
+			backgroundImage: {
+				'radial-gradient':
+					'radial-gradient(circle,rgba(0, 255, 179, 0.75) 0%, rgba(29, 215, 94, 0.75) 30%, rgba(0, 255, 81, 0.75) 62%, rgba(29, 215, 94, 0.75) 97%, rgba(1, 1, 1, 0.55) 100%);'
+			},
 			boxShadow: {
 				soft: '0 8px 4px rgba(0, 0, 0, 0.1)',
 				deep: '0 10px 8px 2px rgba(0, 0, 0, 0.15)'

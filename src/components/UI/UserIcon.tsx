@@ -10,7 +10,13 @@ const UserIcon: FC<IUserIcon> = ({ name, image }) => {
 	return (
 		<div>
 			{image ? (
-				<img src={image} alt={name} className='h-[52] object-cover' />
+				<Image
+					src={image}
+					alt={name}
+					width={52}
+					height={52}
+					className='object-cover'
+				/>
 			) : (
 				<div className='w-12 h-12 rounded-full mr-12 bg-white flex items-center justify-center text-dark_grey text-[20px] font-bold'>
 					{name.charAt(0)}

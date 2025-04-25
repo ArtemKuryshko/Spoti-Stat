@@ -53,8 +53,8 @@ export default function TracksPage() {
 	} = useQuery<InnerTrackType[]>({
 		queryKey: ['recent-tracks'],
 		queryFn: async () => {
-			const { data } = await TracksService.getRecentlyPlayedTracks()
-			return data.items.filter(
+			const tracks = await TracksService.getRecentlyPlayedTracks()
+			return tracks.filter(
 				(
 					track: { track: TrackType },
 					index: number,

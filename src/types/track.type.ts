@@ -23,6 +23,13 @@ export interface InnerTrackType {
     track: TrackType
 }
 
+export interface TracksResponse {
+    items: TrackType[]
+    total: number
+    limit: number
+    offset: number
+}
+
 export type TrackListType = 'top' | 'recently' | 'saved'
 
 export type TopTimeType = 'short_term' | 'medium_term' | 'long_term'

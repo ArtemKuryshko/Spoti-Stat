@@ -1,9 +1,8 @@
 import { instance } from "@/api/api.interceptor"
-import { AuthService } from "./auth.service";
 
 export const ProfileService = {
     getProfile : async () => {
-        const accessToken = await AuthService.getToken();
+        const accessToken = localStorage.getItem('access_token');
         return instance("/me", {
             method: 'GET',
             headers: {

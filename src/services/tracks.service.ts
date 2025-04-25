@@ -1,23 +1,23 @@
 import { instance } from "@/api/api.interceptor"
-import { auth } from "@/auth"
-import { AuthService } from "./auth.service";
-import { time } from "console";
+import { TopTimeType, TracksResponse } from "@/types/track.type";
 
 export const TracksService = {
     getSavedTracks: async () => {
         const accessToken = localStorage.getItem('access_token');
 
-        return instance("/me/tracks?limit=48", {
+        const response = instance<TracksResponse>("/me/tracks?limit=48", {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },
         })
+
+        return (await response).data.items
     },
-    getTopTracks: async (time_range: string, ) => {
+    getTopTracks: async (time_range: TopTimeType) => {
         const accessToken = localStorage.getItem('access_token');
 
-        return instance("/me/top/tracks", {
+        const response = instance<TracksResponse>("/me/top/tracks", {
             method: 'GET',
             params: {
                 limit: 50,
@@ -27,19 +27,39 @@ export const TracksService = {
                 Authorization: `Bearer ${accessToken}`,
             },
         })
+
+        return (await response).data.items
     },
-    getRecentlyPlayedTracks: async () => {
+    getTopListenedTrack: async () => {
         const accessToken = localStorage.getItem('access_token');
 
-        return instance("/me/player/recently-played", {
+        const response = instance<TracksResponse>("/me/top/tracks", {
             method: 'GET',
             params: {
-                limit: 48,
+                limit: 1,
+                time_range: 'long_term'
+            },
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        })
+
+        return (await response).data.items[0]
+    },
+    getRecentlyPlayedTracks: async (limit: number = 48) => {
+        const accessToken = localStorage.getItem('access_token');
+
+        const response = instance<TracksResponse>("/me/player/recently-played", {
+            method: 'GET',
+            params: {
+                limit,
             },
             headers: {
                 Authorization: `Bearer ${accessToken}`, 
             }
         })
+
+        return (await response).data.items
     }
 
 }
