@@ -5,6 +5,8 @@ import TracksService from "@/services/tracks.service"
 import { useQueries } from "@tanstack/react-query"
 
 export const useFetchDashboardData = () => {
+	const currentInterval = 30000
+
     const data = useQueries({
 		queries: [
 			{
@@ -25,7 +27,8 @@ export const useFetchDashboardData = () => {
 			},
 			{
 				queryKey: ['recently-played', 5],
-				queryFn: async () => await TracksService.getRecentlyPlayedTracks(5)
+				queryFn: async () => await TracksService.getRecentlyPlayedTracks(5),
+				refetchInterval: currentInterval
 			}
 		]
 	})

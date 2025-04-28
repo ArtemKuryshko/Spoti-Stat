@@ -1,5 +1,6 @@
 import { instance } from "@/api/api.interceptor";
-import { AlbumsResponse } from "@/types/album.type";
+import { AlbumType } from "@/types/album.type";
+import { TracksResponse } from "@/types/track.type";
 
 export const AlbumsService = {
     // getTopAlbums: async (limit: number = 20, timeRange: TopTimeType = 'medium_term') => {
@@ -16,10 +17,10 @@ export const AlbumsService = {
     //         },
     //     })
     // }
-    getTopListenedAlbum: async () => {
+    getTopListenedAlbum: async (): Promise<AlbumType> => {
         const accessToken = localStorage.getItem('access_token');
 
-        const response = instance<AlbumsResponse>("/me/albums", {
+        const response = instance<TracksResponse>("/me/top/tracks", {
             method: 'GET',
             params: {
                 limit: 1
@@ -29,6 +30,6 @@ export const AlbumsService = {
             },
         })
 
-        return (await response).data.items[0]
+        return (await response).data.items[0].album
     }
 }

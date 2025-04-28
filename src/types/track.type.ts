@@ -1,14 +1,9 @@
+import { AlbumType } from '@/types/album.type';
+
 export interface TrackType {
     id: string | number
     name: string
-    album: {
-        name: string
-        images: [
-            {
-                url?: string
-            }
-        ]
-    }
+    album: AlbumType
     artists: [
         artist: {
             name: string
@@ -25,6 +20,13 @@ export interface InnerTrackType {
 
 export interface TracksResponse {
     items: TrackType[]
+    total: number
+    limit: number
+    offset: number
+}
+
+export interface InnerTracksResponse {
+    items: InnerTrackType[]
     total: number
     limit: number
     offset: number

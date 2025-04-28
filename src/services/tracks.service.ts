@@ -1,11 +1,11 @@
 import { instance } from "@/api/api.interceptor"
-import { TopTimeType, TracksResponse } from "@/types/track.type";
+import { InnerTracksResponse, TopTimeType, TracksResponse } from "@/types/track.type";
 
 export const TracksService = {
     getSavedTracks: async () => {
         const accessToken = localStorage.getItem('access_token');
 
-        const response = instance<TracksResponse>("/me/tracks?limit=48", {
+        const response = instance<InnerTracksResponse>("/me/tracks?limit=48", {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -49,7 +49,7 @@ export const TracksService = {
     getRecentlyPlayedTracks: async (limit: number = 48) => {
         const accessToken = localStorage.getItem('access_token');
 
-        const response = instance<TracksResponse>("/me/player/recently-played", {
+        const response = instance<InnerTracksResponse>("/me/player/recently-played", {
             method: 'GET',
             params: {
                 limit,

@@ -14,7 +14,7 @@ export default function DashboardPage() {
 
 	return (
 		<div className='w-full p-8'>
-			<div className='w-full py-12 text-center'>
+			<div className='w-full pb-12 text-center'>
 				<h1 className='text-3xl text-primary font-bold'>Welcome</h1>
 				<p className='text-3xl text-primary font-bold mt-3'>
 					Track your stats and have fun!
@@ -90,8 +90,8 @@ export default function DashboardPage() {
 								<TopItemCard
 									type='album'
 									name={album.data?.name ?? ''}
-									img={''}
-									link={'#'}
+									img={album.data?.images[0].url ?? ''}
+									link={album.data?.external_urls.spotify ?? '#'}
 								/>
 							)}
 

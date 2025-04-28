@@ -11,7 +11,8 @@ export const instance = axios.create({
 instance.interceptors.request.use(
 	config => {
 		config.params = {
-			...config.params
+			...config.params,
+			locale: 'en_US'
 		}
 		return config
 	},

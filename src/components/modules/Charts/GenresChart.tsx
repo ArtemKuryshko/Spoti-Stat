@@ -25,11 +25,11 @@ const GenresChart: FC<GenresChartProps> = ({ topGenres, className }) => {
 	return (
 		<div
 			className={cn(
-				'flex flex-col h-full p-4 bg-black text-white rounded-xl shadow-md',
+				'flex flex-col min-h-full p-4 bg-black text-white rounded-xl shadow-md',
 				className
 			)}
 		>
-			<h2 className='text-center font-bold text-lg mb-6'>
+			<h2 className='text-center font-bold text-2xl mb-6'>
 				You really like <span className='text-primary'>{topGenres[0]}</span> out
 				of all genres!
 			</h2>
@@ -40,10 +40,10 @@ const GenresChart: FC<GenresChartProps> = ({ topGenres, className }) => {
 						className='flex flex-col justify-end items-center w-[15%] h-full'
 					>
 						<div
-							className='bg-primary rounded-full w-1/3'
+							className='bg-primary rounded-full w-1/4'
 							style={{ height: `${genre.value}%` }}
 						/>
-						<p className='mt-2 text-sm text-center'>{genre.name}</p>
+						<p className='mt-3 text-sm text-center'>{genre.name}</p>
 					</div>
 				))}
 			</div>

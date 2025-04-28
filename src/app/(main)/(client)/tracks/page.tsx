@@ -27,8 +27,7 @@ export default function TracksPage() {
 	} = useQuery<TrackType[]>({
 		queryKey: ['top-tracks', timeRange],
 		queryFn: async () => {
-			const { data } = await TracksService.getTopTracks(timeRange)
-			return data.items
+			return await TracksService.getTopTracks(timeRange)
 		},
 		refetchInterval: intervalMs
 	})
@@ -40,8 +39,7 @@ export default function TracksPage() {
 	} = useQuery<InnerTrackType[]>({
 		queryKey: ['saved-tracks'],
 		queryFn: async () => {
-			const { data } = await TracksService.getSavedTracks()
-			return data.items
+			return await TracksService.getSavedTracks()
 		},
 		refetchInterval: intervalMs
 	})
