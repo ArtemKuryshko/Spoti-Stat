@@ -3,8 +3,8 @@ import LocalStorageWriter from '@/components/modules/LocalStorage/LocalStorageWr
 import { AuthService } from '@/services/auth.service'
 
 export default async function MainLayout({
-	children
-}: {
+																					 children
+																				 }: {
 	children: React.ReactNode
 }) {
 	const accessToken: string = await AuthService.getToken()
@@ -13,7 +13,7 @@ export default async function MainLayout({
 		<>
 			<Header />
 			<LocalStorageWriter accessToken={accessToken} />
-			<div className='pt-[88] pb-[20]'>{children}</div>
+			<div className="pt-[88] pb-[20]">{children}</div>
 		</>
 	)
 }

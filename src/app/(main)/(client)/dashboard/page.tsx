@@ -7,22 +7,22 @@ import TopItemCard from '@/components/UI/TopItemCard/TopItemCard'
 import { useFetchDashboardData } from '@/hooks/useFetchDashboardData'
 
 export default function DashboardPage() {
-	const { artist, track, album, topGenres, recentlyPlayedTracks } =
-		useFetchDashboardData()
+	const { artist, track, album, topGenres, recentlyPlayedTracks }
+		= useFetchDashboardData()
 
 	console.log(artist, track, album, topGenres, recentlyPlayedTracks)
 
 	return (
-		<div className='w-full p-8'>
-			<div className='w-full pb-12 text-center'>
-				<h1 className='text-3xl text-primary font-bold'>Welcome</h1>
-				<p className='text-3xl text-primary font-bold mt-3'>
+		<div className="w-full p-8">
+			<div className="w-full pb-12 text-center">
+				<h1 className="text-3xl text-primary font-bold">Welcome</h1>
+				<p className="text-3xl text-primary font-bold mt-3">
 					Track your stats and have fun!
 				</p>
 			</div>
 
-			<div className='w-full flex flex-col gap-8'>
-				<div className='w-full flex gap-8'>
+			<div className="w-full flex flex-col gap-8">
+				<div className="w-full flex gap-8">
 					<>
 						{artist.isPending ? (
 							<Loader />
@@ -30,7 +30,7 @@ export default function DashboardPage() {
 							<TopItemCard
 								name={artist.data?.name ?? ''}
 								img={artist.data?.images[0].url ?? ''}
-								type='artist'
+								type="artist"
 								link={artist.data?.external_urls.spotify ?? '#'}
 							/>
 						)}
@@ -43,7 +43,7 @@ export default function DashboardPage() {
 							<Loader />
 						) : (
 							<GenresChart
-								className='flex-3/4'
+								className="flex-3/4"
 								topGenres={topGenres.data ?? []}
 							/>
 						)}
@@ -51,13 +51,13 @@ export default function DashboardPage() {
 						{topGenres.isError && <div>Something went wrong with genres</div>}
 					</>
 				</div>
-				<div className='w-full flex gap-8'>
+				<div className="w-full flex gap-8">
 					<>
 						{recentlyPlayedTracks.isPending ? (
 							<Loader />
 						) : (
 							<RecentlyPlayedList
-								className='flex-3/4'
+								className="flex-3/4"
 								recentlyPlayedTracks={recentlyPlayedTracks.data ?? []}
 							/>
 						)}
@@ -67,13 +67,13 @@ export default function DashboardPage() {
 						)}
 					</>
 
-					<div className='flex flex-col gap-8'>
+					<div className="flex flex-col gap-8">
 						<>
 							{track.isPending ? (
 								<Loader />
 							) : (
 								<TopItemCard
-									type='track'
+									type="track"
 									name={track.data?.name ?? ''}
 									img={track.data?.album.images[0].url ?? ''}
 									link={track.data?.external_urls.spotify ?? '#'}
@@ -88,7 +88,7 @@ export default function DashboardPage() {
 								<Loader />
 							) : (
 								<TopItemCard
-									type='album'
+									type="album"
 									name={album.data?.name ?? ''}
 									img={album.data?.images[0].url ?? ''}
 									link={album.data?.external_urls.spotify ?? '#'}
