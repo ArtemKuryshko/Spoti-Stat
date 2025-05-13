@@ -34,9 +34,11 @@ export const AuthService = {
 				expires_in: Date.now() + data.expires_in * 1000,
 				refresh_token: data.refresh_token || token.refreshToken // Keep the old one if not returned
 			}
-		} catch (error: Error) {
-			console.error('Error refreshing Spotify token:', error.response?.data || error)
-			throw new Error('Failed to refresh token')
+		} catch (error) {
+			if (error instanceof Error) {
+				console.error('Error refreshing Spotify token:', error.message)
+				throw new Error('Failed to refresh token')
+			}
 		}
 	}
 }
